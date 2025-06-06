@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Weather API
+
+A simple weather API built with Next.js, TypeScript, and Visual Crossing Weather Service.  
+Implements rate limiting, error handling, and supports caching.
+
+## Features
+
+- Get current weather for a city
+- Rate limiting per IP
+- TypeScript strict typing
+- Prettier formatting and ESLint linting
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- 📦 [Node.js](https://nodejs.org/) (v20 or greater)
+- 🐳 [Docker](https://www.docker.com/) - Required for local development
+- ☁️ [Visual Crossing Weather API](https://www.visualcrossing.com/weather-api/) - Weather Service
+
+
+### Installation
+
+```bash
+git clone https://github.com/gunjanmodi/weather-api-nextjs.git
+cd weather-api
+npm install
+```
+
+### Start redis container
+
+```bash
+sh ./start-redis.sh
+```
+
+### Running the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Building for Production
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## API Usage
 
-## Learn More
+### Get Weather
 
-To learn more about Next.js, take a look at the following resources:
+**Endpoint:**  
+`GET /api/weather?city=<city_name>`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Query Parameters:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `city` (required): Name of the city to fetch weather for.
 
-## Deploy on Vercel
+**Example:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+curl "http://localhost:3000/api/weather?city=Ahmedabad"
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Response:**
+
+```json
+{
+    "city": "Ahmedabad",
+    "temperature": 33,
+    "condition": "Clear",
+    "timestamp": "2025-06-06T06:42:46.701Z"
+}
+```
+
+## Code Quality
+
+- **Lint:**  
+  ```bash
+  npm run lint
+  ```
+
+- **Lint Fix:**  
+  ```bash
+  npm run lint:fix
+  ```
+
+- **Format Check:**  
+  ```bash
+  npm run format:check
+  ```
+
+- **Format Write:**  
+  ```bash
+  npm run format:write
+  ```
+
+- **Type Check:**  
+  ```bash
+  npm run typecheck
+  ```
+
+## License
+
+MIT
