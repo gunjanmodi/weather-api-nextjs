@@ -3,12 +3,14 @@
 A simple weather API built with Next.js, TypeScript, and Visual Crossing Weather Service.  
 Implements rate limiting, error handling, and supports caching.
 
+
 ## Features
 
 - Get current weather for a city
 - Rate limiting per IP
 - TypeScript strict typing
 - Prettier formatting and ESLint linting
+- Features are inspired from https://roadmap.sh/projects/weather-api-wrapper-service
 
 ## Getting Started
 
